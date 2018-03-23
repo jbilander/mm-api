@@ -1,5 +1,5 @@
 <h4> Technologies used in this project: </h4>
-
+<br />
 <ul>
     <li>Jersey 2.26/ JAX-RS 2.1</li>
     <li>Json/Jackson 2.26 (annotations)</li>
@@ -37,7 +37,7 @@ DataSource config added in Tomcats conf/context.xml-file:
 
 Windows:<br /><br />
 <pre>
-<textarea>
+<textarea rows="20" cols="300" style="border:none;">
 <Context>
     <Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
@@ -48,22 +48,20 @@ Windows:<br /><br />
 </Context>
 </textarea>
 </pre>
-
 Linux:<br /><br />
-
 <pre>
-<textarea>
+<textarea rows="20" cols="300" style="border:none;">
 <Context>
     <Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
                validationQuery="select 1" maxConnLifetimeMillis="28800000"
                username="my_user" password="my_password" driverClassName="org.mariadb.jdbc.Driver"
                url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;localSocket=/var/run/mysqld/mysqld.sock"/>
-</Context> 
+</Context>
 </textarea>
 </pre>
 <br />
-Connection to database in code (ConnectionPoolHelper) through DataSource:
+Connection to database in code through DataSource:
 <br /><br /><br />
 <pre>
 Context initContext = new InitialContext();
