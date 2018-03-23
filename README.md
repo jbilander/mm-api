@@ -34,31 +34,26 @@ export JDK_JAVA_OPTIONS=--add-modules java.xml.bind
 
 DataSource config added in Tomcats conf/context.xml-file: 
 
-
 Windows:<br /><br />
 <pre>
-<textarea rows="20" cols="300" style="border:none;">
-<Context>
-    <Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
+&lt;Context&gt;
+    &lt;Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
                validationQuery="select 1" maxConnLifetimeMillis="28800000"
                username="my_user" password="my_password" driverClassName="org.mariadb.jdbc.Driver"
-               url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;pipe=C:\tmp\mysql.sock"/>
+               url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;pipe=C:\tmp\mysql.sock"/&gt;
 
-</Context>
-</textarea>
+&lt;/Context&gt;
 </pre>
 Linux:<br /><br />
 <pre>
-<textarea rows="20" cols="300" style="border:none;">
-<Context>
-    <Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
+&lt;Context&gt;
+    &lt;Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
                validationQuery="select 1" maxConnLifetimeMillis="28800000"
                username="my_user" password="my_password" driverClassName="org.mariadb.jdbc.Driver"
-               url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;localSocket=/var/run/mysqld/mysqld.sock"/>
-</Context>
-</textarea>
+               url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;localSocket=/var/run/mysqld/mysqld.sock"/&gt;
+&lt;/Context&gt;
 </pre>
 <br />
 Connection to database in code through DataSource:
