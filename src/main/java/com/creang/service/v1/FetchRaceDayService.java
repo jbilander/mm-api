@@ -33,7 +33,7 @@ public class FetchRaceDayService {
 
             String sql = "select rc.RaceDayDate, r.AtgTrackId, r.AtgTrackCode, r.TrackName from racecard rc " +
                     "inner join leg l on rc.Id = l.RaceCardId inner join race r on l.RaceId = r.Id " +
-                    "where rc.Activated = 1 and rc.RaceDayDate >= ? and l.LegNumber = 1 " +
+                    "where rc.Activated = 1 and rc.RaceDayDate >= ? " +
                     "group by rc.RaceDayDate, r.AtgTrackId, r.AtgTrackCode, r.TrackName " +
                     "order by rc.RaceDayDate, min(r.PostTime)";
 
