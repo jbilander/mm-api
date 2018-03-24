@@ -6,16 +6,15 @@ import com.creang.model.v1.RaceDay;
 import com.creang.model.v1.SimpleRaceCard;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModelService {
 
     private final FetchRaceDayService fetchRaceDayService = new FetchRaceDayService();
+    private final FetchRaceCardService fetchRaceCardService = new FetchRaceCardService();
 
-    public List<SimpleRaceCard> fetchRaceCards(LocalDate localDate) {
-        List<SimpleRaceCard> simpleRaceCards = new ArrayList<>();
-        return simpleRaceCards;
+    public List<SimpleRaceCard> fetchRaceCards(LocalDate date) {
+        return fetchRaceCardService.fetch(date);
     }
 
     public RaceCard fetchRaceCard(int raceCardId) {
