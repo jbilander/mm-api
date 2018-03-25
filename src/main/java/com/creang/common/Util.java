@@ -19,15 +19,23 @@ public class Util {
 
     public static int getBetTypeCode(String betType) {
 
-        switch(betType) {
-            case "V3" : return 1;
-            case "V4" : return 2;
-            case "V5" : return 3;
-            case "V64" : return 4;
-            case "V65" : return 5;
-            case "V75" : return 6;
-            case "GS75" : return 7;
-            case "V86" : return 8;
+        switch (betType) {
+            case "V3":
+                return 1;
+            case "V4":
+                return 2;
+            case "V5":
+                return 3;
+            case "V64":
+                return 4;
+            case "V65":
+                return 5;
+            case "V75":
+                return 6;
+            case "GS75":
+                return 7;
+            case "V86":
+                return 8;
         }
 
         return 0;
