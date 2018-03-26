@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.List;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 @Path("v1")
@@ -29,7 +29,7 @@ public class RESTService {
 
         try {
             LocalDate localDate = LocalDate.parse(dateString, formatter);
-            List<SimpleRaceCard> simpleRaceCards = modelService.fetchRaceCards(localDate);
+            Collection<SimpleRaceCard> simpleRaceCards = modelService.fetchRaceCards(localDate);
             return Response.status(Response.Status.OK).entity(simpleRaceCards).build();
 
         } catch (DateTimeParseException e) {
@@ -61,7 +61,7 @@ public class RESTService {
     public Response fetchRaceDays() {
 
         try {
-            List<RaceDay> raceDays = modelService.fetchRaceDays();
+            Collection<RaceDay> raceDays = modelService.fetchRaceDays();
             return Response.status(Response.Status.OK).entity(raceDays).build();
         } catch (Exception e) {
             logger.severe(e.getMessage());

@@ -8,9 +8,8 @@ import com.creang.model.v1.Track;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class FetchRaceCardService {
@@ -18,7 +17,7 @@ public class FetchRaceCardService {
     private final Logger logger = Logger.getLogger(FetchRaceDayService.class.getName());
     private final ConnectionPoolHelper connectionPoolHelper = ConnectionPoolHelper.getInstance();
 
-    public List<SimpleRaceCard> fetch(LocalDate date) {
+    public Collection<SimpleRaceCard> fetch(LocalDate date) {
 
         LinkedHashMap<Integer, SimpleRaceCard> raceCards = new LinkedHashMap<>();
 
@@ -64,6 +63,6 @@ public class FetchRaceCardService {
             logger.severe(e.getMessage());
         }
 
-        return new ArrayList<>(raceCards.values());
+        return raceCards.values();
     }
 }

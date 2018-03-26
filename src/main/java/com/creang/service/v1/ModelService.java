@@ -6,14 +6,14 @@ import com.creang.model.v1.RaceDay;
 import com.creang.model.v1.SimpleRaceCard;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Collection;
 
 public class ModelService {
 
     private final FetchRaceDayService fetchRaceDayService = new FetchRaceDayService();
     private final FetchRaceCardService fetchRaceCardService = new FetchRaceCardService();
 
-    public List<SimpleRaceCard> fetchRaceCards(LocalDate date) {
+    public Collection<SimpleRaceCard> fetchRaceCards(LocalDate date) {
         return fetchRaceCardService.fetch(date);
     }
 
@@ -21,7 +21,7 @@ public class ModelService {
         return new RaceCard();
     }
 
-    public List<RaceDay> fetchRaceDays() {
+    public Collection<RaceDay> fetchRaceDays() {
         return fetchRaceDayService.fetch(LocalDate.now(Util.ZONE_ID_UTC_MINUS_TWO));
     }
 }

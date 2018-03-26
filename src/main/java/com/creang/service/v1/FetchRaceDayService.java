@@ -9,8 +9,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class FetchRaceDayService {
@@ -18,7 +18,7 @@ public class FetchRaceDayService {
     private final Logger logger = Logger.getLogger(FetchRaceDayService.class.getName());
     private final ConnectionPoolHelper connectionPoolHelper = ConnectionPoolHelper.getInstance();
 
-    public List<RaceDay> fetch(LocalDate date) {
+    public Collection<RaceDay> fetch(LocalDate date) {
 
         LinkedHashMap<LocalDate, RaceDay> raceDays = new LinkedHashMap<>();
 
@@ -58,6 +58,6 @@ public class FetchRaceDayService {
             logger.severe(e.getMessage());
         }
 
-        return new ArrayList<>(raceDays.values());
+        return raceDays.values();
     }
 }
