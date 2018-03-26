@@ -38,8 +38,7 @@ Windows:<br /><br />
 <pre>
 &lt;Context&gt;
     &lt;Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
-               maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
-               validationQuery="select 1" maxConnLifetimeMillis="28800000"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000" validationQuery="select 1"
                username="my_user" password="my_password" driverClassName="org.mariadb.jdbc.Driver"
                url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;pipe=C:\tmp\mysql.sock"/&gt;
 
@@ -49,8 +48,7 @@ Linux:<br /><br />
 <pre>
 &lt;Context&gt;
     &lt;Resource name="jdbc/MyAtgDS" auth="Container" type="javax.sql.DataSource"
-               maxTotal="100" maxIdle="30" maxWaitMillis="10000" testOnBorrow="true" 
-               validationQuery="select 1" maxConnLifetimeMillis="28800000"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000" validationQuery="select 1"
                username="my_user" password="my_password" driverClassName="org.mariadb.jdbc.Driver"
                url="jdbc:mariadb://localhost/myatg?autoReconnect=true&amp;localSocket=/var/run/mysqld/mysqld.sock"/&gt;
 &lt;/Context&gt;
