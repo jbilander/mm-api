@@ -6,7 +6,7 @@
     <li>Java SDK 9</li>
     <li>Tomcat 9</li>
     <li>JNDI DataSource (Commons DBCP 2 Connection Pool in Tomcat 9)</li>
-    <li>MariaDb jdbc-driver 2.2.3 for MySQL</li>
+    <li>MariaDB Connector/J 2.2.3 jdbc-driver for MySQL</li>
     <li>Fast Socket-connection to MySQL (Unix-socket/Windows-Pipe), Requires App and Db on same machine!</li>
     <li>Pure JDBC with Prepared Statements and transaction-handling/rollbacks</li>
     <li>Simple logging with java.util.logging</li>
