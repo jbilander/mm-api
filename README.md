@@ -11,7 +11,7 @@
     <li>Pure JDBC with Prepared Statements and transaction-handling/rollbacks</li>
     <li>Simple logging with java.util.logging</li>
     <li>Maven 3</li>
-    <li>Packaged with Maven 3 "package"-feature as a war (mm-api-1.0-SNAPSHOT.war)</li>
+    <li>Packaged with Maven 3 "package"-feature as a war-file</li>
 </ul>
 <br /><br />
 Caveats Java 9 SDK: <br /><br />
