@@ -3,13 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <display-name>${project.artifactId}-${project.version}</display-name>
     <servlet>
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
-        <url-pattern>/api/rest/*</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
