@@ -18,7 +18,7 @@ public class ModelService {
     }
 
     public RaceCard fetchRaceCard(int raceCardId) {
-        return new RaceCard();
+        return fetchRaceCardService.fetch(raceCardId);
     }
 
     public Collection<RaceDay> fetchRaceDays() {

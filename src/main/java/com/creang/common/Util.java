@@ -1,9 +1,7 @@
 package com.creang.common;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Util {
@@ -12,9 +10,17 @@ public class Util {
     public static final ZoneId ZONE_ID_STHLM = ZoneId.of("Europe/Stockholm");
     public static final ZoneId ZONE_ID_UTC_MINUS_TWO = ZoneId.of("Etc/GMT+2");
 
-    public static String getPostTimeUtc(LocalDate raceDayDate, Time postTime, ZoneId zoneId) {
-        ZonedDateTime zdt = ZonedDateTime.of(raceDayDate, postTime.toLocalTime(), zoneId);
+    public static String getDateTimeUtc(LocalDate localDate, LocalTime localTime, ZoneId zoneId) {
+        return getDateTimeUtc(LocalDateTime.of(localDate, localTime), zoneId);
+    }
+
+    public static String getDateTimeUtc(LocalDateTime localDateTime, ZoneId zoneId) {
+        ZonedDateTime zdt = ZonedDateTime.of(localDateTime, zoneId);
         return zdt.format(DateTimeFormatter.ISO_INSTANT);
+    }
+
+    public static String getDateTimeUtc(Timestamp timestamp, ZoneId zoneId) {
+        return timestamp.toInstant().atZone(zoneId).format(DateTimeFormatter.ISO_INSTANT);
     }
 
     public static int getBetTypeCode(String betType) {

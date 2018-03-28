@@ -7,8 +7,6 @@ import com.creang.model.v1.Track;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.logging.Logger;
@@ -25,7 +23,7 @@ public class FetchRaceDayService {
         String sql = "select rc.RaceDayDate, r.AtgTrackId, r.AtgTrackCode, r.TrackName from racecard rc " +
                 "inner join leg l on rc.Id = l.RaceCardId inner join race r on l.RaceId = r.Id " +
                 "where rc.Activated = 1 and rc.RaceDayDate >= ? " +
-                "group by rc.RaceDayDate, r.AtgTrackId, r.AtgTrackCode, r.TrackName " +
+                "group by rc.RaceDayDate, r.AtgTrackId, r.AtgTrackCode " +
                 "order by rc.RaceDayDate, min(r.PostTime)";
 
 
@@ -42,7 +40,7 @@ public class FetchRaceDayService {
 
                     if (!raceDays.containsKey(raceDayDate)) {
                         RaceDay raceDay = new RaceDay();
-                        raceDay.setDateTimeUtc(Util.getPostTimeUtc(raceDayDate, Time.valueOf(LocalTime.MIN), Util.ZONE_ID_UTC));
+                        raceDay.setDateTimeUtc(Util.getDateTimeUtc(raceDayDate.atStartOfDay(), Util.ZONE_ID_UTC));
                         raceDays.put(raceDayDate, raceDay);
                     }
 
@@ -50,7 +48,10 @@ public class FetchRaceDayService {
                     track.setId(rs.getInt(2));
                     track.setCode(rs.getString(3));
                     track.setName(rs.getString(4));
-                    raceDays.get(raceDayDate).getTracks().add(track);
+
+                    if (!raceDays.get(raceDayDate).getTracks().contains(track)) {
+                        raceDays.get(raceDayDate).getTracks().add(track);
+                    }
                 }
             }
 
