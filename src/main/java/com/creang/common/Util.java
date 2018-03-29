@@ -46,4 +46,18 @@ public class Util {
 
         return 0;
     }
+
+    public static int getHorseGenderCode(String gender) {
+
+        switch (gender) {
+            case "H":
+                return 1;
+            case "S":
+                return 2;
+            case "V":
+                return 3;
+        }
+
+        return 0;
+    }
 }

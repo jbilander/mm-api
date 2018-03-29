@@ -3,6 +3,8 @@ package com.creang.model.v1;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Leg {
 
@@ -18,7 +20,7 @@ public class Leg {
     private String currency = "SEK";
     private String startMethodCode;
     private Track track;
-    //private List<Participant> participant;
+    private List<Participant> participants;
 
     public void setLegNumber(int legNumber) {
         this.legNumber = legNumber;
@@ -128,15 +130,13 @@ public class Leg {
         return track;
     }
 
-    /*
     @JsonProperty("Participants")
-    public List<Participant> getParticipant() {
+    public List<Participant> getParticipants() {
 
-        if (participant == null) {
-            participant = new ArrayList<>();
+        if (participants == null) {
+            participants = new ArrayList<>();
         }
 
-        return participant;
+        return participants;
     }
-    */
 }
