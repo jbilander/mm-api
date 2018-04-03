@@ -1,5 +1,7 @@
 package com.creang.common;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -25,6 +27,11 @@ public class Util {
 
     public static String getDateTimeLocal(Timestamp timestamp, ZoneId zoneId) {
         return timestamp.toInstant().atZone(zoneId).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+    }
+
+    public static String getDateTimeLocal(Date date, Time time, ZoneId zoneId) {
+        ZonedDateTime zdt = ZonedDateTime.of(date.toLocalDate(), time.toLocalTime(), zoneId);
+        return zdt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
     }
 
     public static int getBetTypeCode(String betType) {
