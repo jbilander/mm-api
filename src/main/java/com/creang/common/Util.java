@@ -23,6 +23,10 @@ public class Util {
         return timestamp.toInstant().atZone(zoneId).format(DateTimeFormatter.ISO_INSTANT);
     }
 
+    public static String getDateTimeLocal(Timestamp timestamp, ZoneId zoneId) {
+        return timestamp.toInstant().atZone(zoneId).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+    }
+
     public static int getBetTypeCode(String betType) {
 
         switch (betType) {

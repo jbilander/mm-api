@@ -71,7 +71,7 @@ public class FetchRaceCardService {
     public RaceCard fetch(int raceCardId) {
 
         RaceCard raceCard = null;
-        String sql1 = "select Id, BetType, AtgTrackId, TurnOver, Updated, MadeBetsQuantity  from racecard where id = ?";
+        String sql1 = "select BetType, AtgTrackId, TurnOver, Updated, MadeBetsQuantity from racecard where Id = ?";
         String sql2 = "select l.Id, l.LegNumber, l.LegName, l.ReserveOrder, r.RaceNumber, r.Distance, r.RaceDayDate, r.PostTime, " +
                 "r.RaceName, r.ShortDesc, r.WinTurnOver, r.StartMethod, r.AtgTrackId, r.AtgTrackCode, r.TrackName from leg l " +
                 "inner join race r on l.RaceId = r.Id where RaceCardId = ? order by LegNumber";
@@ -91,15 +91,15 @@ public class FetchRaceCardService {
                         if (rs1 != null && rs1.next()) {
 
                             raceCard = new RaceCard();
-                            raceCard.setId(rs1.getInt(1));
+                            raceCard.setId(raceCardId);
                             BetType betType = new BetType();
-                            betType.setCode(Util.getBetTypeCode(rs1.getString(2)));
-                            betType.setDescription(rs1.getString(2));
+                            betType.setCode(Util.getBetTypeCode(rs1.getString(1)));
+                            betType.setDescription(rs1.getString(1));
                             raceCard.setBetType(betType);
-                            raceCard.setRaceCardTrackId(rs1.getInt(3));
-                            raceCard.setTurnOver(rs1.getBigDecimal(4));
-                            raceCard.setTimeStampLatestUpdateUtc(Util.getDateTimeUtc(rs1.getTimestamp(5), Util.ZONE_ID_STHLM));
-                            raceCard.setMadeBetsQuantity(rs1.getInt(6));
+                            raceCard.setRaceCardTrackId(rs1.getInt(2));
+                            raceCard.setTurnOver(rs1.getBigDecimal(3));
+                            raceCard.setTimeStampLatestUpdateUtc(Util.getDateTimeUtc(rs1.getTimestamp(4), Util.ZONE_ID_STHLM));
+                            raceCard.setMadeBetsQuantity(rs1.getInt(5));
 
                             ps2.setInt(1, raceCardId);
                             ResultSet rs2 = ps2.executeQuery();
@@ -156,14 +156,14 @@ public class FetchRaceCardService {
                                         p.setHorse(horse);
                                         Driver driver = new Driver();
                                         driver.setFirstName(rs3.getString(12) != null ? rs3.getString(12) : "");
-                                        driver.setLastName(rs3.getString(13) != null ? rs3.getString(13): "");
-                                        driver.setShortName(rs3.getString(14) != null ? rs3.getString(14): "");
+                                        driver.setLastName(rs3.getString(13) != null ? rs3.getString(13) : "");
+                                        driver.setShortName(rs3.getString(14) != null ? rs3.getString(14) : "");
                                         driver.setAmateur(rs3.getBoolean(15));
                                         horse.setDriver(driver);
                                         Trainer trainer = new Trainer();
-                                        trainer.setFirstName(rs3.getString(16) != null ? rs3.getString(16): "");
-                                        trainer.setLastName(rs3.getString(17) != null ? rs3.getString(17): "");
-                                        trainer.setShortName(rs3.getString(18) != null ? rs3.getString(18): "");
+                                        trainer.setFirstName(rs3.getString(16) != null ? rs3.getString(16) : "");
+                                        trainer.setLastName(rs3.getString(17) != null ? rs3.getString(17) : "");
+                                        trainer.setShortName(rs3.getString(18) != null ? rs3.getString(18) : "");
                                         trainer.setAmateur(rs3.getBoolean(19));
                                         horse.setTrainer(trainer);
                                         leg.getParticipants().add(p);

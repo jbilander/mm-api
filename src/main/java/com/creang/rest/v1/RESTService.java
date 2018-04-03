@@ -30,7 +30,12 @@ public class RESTService {
         try {
             LocalDate localDate = LocalDate.parse(dateString, formatter);
             Collection<SimpleRaceCard> simpleRaceCards = modelService.fetchRaceCards(localDate);
-            return Response.status(Response.Status.OK).entity(simpleRaceCards).build();
+
+            if (simpleRaceCards.size() == 0) {
+                return Response.status(Response.Status.NO_CONTENT).entity(simpleRaceCards).build();
+            } else {
+                return Response.status(Response.Status.OK).entity(simpleRaceCards).build();
+            }
 
         } catch (DateTimeParseException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -48,7 +53,12 @@ public class RESTService {
 
         try {
             RaceCard raceCard = modelService.fetchRaceCard(raceCardId);
-            return Response.status(Response.Status.OK).entity(raceCard).build();
+            if (raceCard == null) {
+                return Response.status(Response.Status.NO_CONTENT).entity(null).build();
+            } else {
+                return Response.status(Response.Status.OK).entity(raceCard).build();
+            }
+
         } catch (Exception e) {
             logger.severe(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -62,7 +72,11 @@ public class RESTService {
 
         try {
             Collection<RaceDay> raceDays = modelService.fetchRaceDays();
-            return Response.status(Response.Status.OK).entity(raceDays).build();
+            if (raceDays.size() == 0) {
+                return Response.status(Response.Status.NO_CONTENT).entity(raceDays).build();
+            } else {
+                return Response.status(Response.Status.OK).entity(raceDays).build();
+            }
         } catch (Exception e) {
             logger.severe(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
