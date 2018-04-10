@@ -3,6 +3,8 @@ package com.creang.model.v2;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Leg {
 
@@ -31,6 +33,7 @@ public class Leg {
     private boolean monte;
     private boolean gallop;
     private BigDecimal winTurnOver;
+    private List<Participant> participants;
 
     @JsonIgnore
     public int getId() {
@@ -232,5 +235,14 @@ public class Leg {
 
     public void setWinTurnOver(BigDecimal winTurnOver) {
         this.winTurnOver = winTurnOver;
+    }
+
+    public List<Participant> getParticipants() {
+
+        if (participants == null) {
+            participants = new ArrayList<>();
+        }
+
+        return participants;
     }
 }

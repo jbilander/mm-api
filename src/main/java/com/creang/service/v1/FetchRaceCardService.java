@@ -74,11 +74,11 @@ public class FetchRaceCardService {
         String sql1 = "select BetType, AtgTrackId, TurnOver, Updated, MadeBetsQuantity from racecard where Id = ?";
         String sql2 = "select l.Id, l.LegNumber, l.LegName, l.ReserveOrder, r.RaceNumber, r.Distance, r.RaceDayDate, r.PostTime, " +
                 "r.RaceName, r.ShortDesc, r.WinTurnOver, r.StartMethod, r.AtgTrackId, r.AtgTrackCode, r.TrackName from leg l " +
-                "inner join race r on l.RaceId = r.Id where RaceCardId = ? order by LegNumber";
+                "inner join race r on l.RaceId = r.Id where l.RaceCardId = ? order by l.LegNumber";
         String sql3 = "select p.StartNumber, p.Distance, p.StartPosition, p.Scratched, p.WinnerOdds, lp.Percentage, h.Name, h.Age, h.Gender, " +
                 "h.ForeShoes, h.HindShoes, d.FirstName, d.LastName, d.ShortName, d.Amateur, t.FirstName, t.LastName, t.ShortName, t.Amateur " +
-                "from Participant p inner join Horse h on h.Id = p.Id inner join Driver d on d.Id = p.Id inner join Trainer t on t.Id = p.Id " +
-                "inner join LegParticipant lp on lp.ParticipantId = p.Id and lp.LegId = ? order by p.StartNumber";
+                "from participant p inner join horse h on h.Id = p.Id inner join driver d on d.Id = p.Id inner join trainer t on t.Id = p.Id " +
+                "inner join legparticipant lp on lp.ParticipantId = p.Id and lp.LegId = ? order by p.StartNumber";
 
         try (Connection conn = connectionPoolHelper.getDataSource().getConnection()) {
             try (PreparedStatement ps1 = conn.prepareStatement(sql1)) {
